@@ -6,20 +6,20 @@
     <title>${nome}</title>
     <style>
         * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-        body { background:#000; overflow:hidden; height:100dvh; display:flex; justify-content:center; align-items:center; }
+        body { background:#000; overflow:hidden; height:100dvh; display:flex; justify-content:center; align-items:center; font-family:sans-serif; }
         .page { display:none; width:100%; height:100%; position:absolute; max-width:500px; opacity:0; transition:opacity 0.8s ease-in-out; }
         .page.active { display:flex; opacity:1; }
         img, video { width:100%; height:100%; object-fit:contain; }
-        .hotspot { position:absolute; width:35%; height:10%; transform:translate(-50%, -50%); z-index:100; cursor:pointer; }
+        .hotspot { position:absolute; transform:translate(-50%, -50%); z-index:100; cursor:pointer; border-radius:50%; }
         #btn-som { position:fixed; top:20px; left:20px; width:45px; height:45px; background:rgba(255,255,255,0.7); border-radius:50%; z-index:999; display:none; justify-content:center; align-items:center; border:none; }
     </style>
 </head>
 <body>
-<audio id="m" src="${som}" loop></audio>
+<audio id="m" src="${som.data}" loop></audio>
 <button id="btn-som" onclick="t()">II</button>
-<div class="page active" id="pg1" onclick="s()"><img src="${p1}"></div>
-<div class="page" id="pg2"><video id="v" src="${p2}" playsinline webkit-playsinline></video></div>
-<div class="page" id="pg3"><img src="${p3}">${linksHTML}</div>
+<div class="page active" id="pg1" onclick="s()"><img src="${p1.data}"></div>
+<div class="page" id="pg2"><video id="v" src="${p2.data}" playsinline webkit-playsinline></video></div>
+<div class="page" id="pg3"><img src="${p3.data}">${hotspotsHTML}</div>
 <script>
     const mu=document.getElementById('m'), vi=document.getElementById('v'), btn=document.getElementById('btn-som');
     function s(){ mu.play().catch(()=>{}); btn.style.display='flex'; g(2); vi.play(); vi.onended=()=>g(3); }
